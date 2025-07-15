@@ -1,0 +1,58 @@
+---
+interface Props {
+  position: number;
+  color: string;
+  class?: string;
+}
+
+const { position, color, class: className = "" } = Astro.props;
+
+const positionClasses = {
+  1: "left-[5%]",
+  2: "left-[15%]",
+  3: "left-[25%]",
+  4: "left-[35%]",
+  5: "left-[45%]",
+  6: "left-[55%]",
+  7: "left-[65%]",
+  8: "left-[75%]",
+  9: "left-[85%]",
+  10: "left-[96.5%]",
+};
+
+const leftPosition =
+  positionClasses[position as keyof typeof positionClasses] || "left-[50%]";
+---
+
+<div class:list={[]}>
+  <!-- Long line -->
+  <div
+    class:list={[
+      "absolute",
+      "top-1/2",
+      "-translate-y-9",
+      "-translate-x-1/2",
+      "h-2",
+      "w-1",
+      "z-0",
+      color,
+      leftPosition,
+    ]}
+  >
+  </div>
+  <!-- Short line -->
+  <div
+    class:list={[
+      "absolute",
+      "top-1/2",
+      "-translate-y-5",
+      "-translate-x-1/2",
+      "h-1",
+      "w-1",
+      "z-0",
+      color,
+      leftPosition,
+    ]}
+  >
+  </div>
+</div>
