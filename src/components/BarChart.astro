@@ -1,147 +1,148 @@
 ---
+import Info from "../components/ui/Info.astro";
+import Bar from "../components/ui/Bar.astro";
+import Line from "../components/ui/Line.astro";
+
 interface Competencia {
   titulo: string;
   valor: number;
   minimo: number;
   maximo: number;
   descripcion: string;
+  color: string;
 }
 
 const chartData: Competencia[] = [
   {
-    titulo: "Atención a los detalles",
+    titulo: "Antecedentes tecnológicos",
     valor: 1,
     minimo: 1,
     maximo: 10,
-    descripcion: "Disfrute, interés y habilidad para verificar y revisar.",
+    descripcion:
+      "Comprender cómo funcionan las tecnologías y sus efectos sociales fortalece el liderazgo estratégico.",
+    color: "text-tech-red bg-tech-red border-tech-red",
   },
   {
-    titulo: "Capacidad de análisis",
-    valor: 8,
+    titulo: "Evolución tecnológica",
+    valor: 2,
     minimo: 1,
     maximo: 10,
     descripcion:
-      "Inclinación hacia el análisis de datos y la comprensión de hechos.",
+      "Conocer la evolución tecnológica permite anticipar cambios y liderar la innovación.",
+    color: "text-tech-red bg-tech-red border-tech-red",
   },
   {
-    titulo: "Conformidad",
+    titulo: "Internet y conectividad",
+    valor: 3,
+    minimo: 1,
+    maximo: 10,
+    descripcion:
+      "Diferenciar Web e Internet ayuda a planear mejor la infraestructura y seguridad digital.",
+    color: "text-tech-red bg-tech-red border-tech-red",
+  },
+  {
+    titulo: "Dispositivos digitales",
     valor: 4,
     minimo: 1,
     maximo: 10,
     descripcion:
-      "Preferencia por las reglas y los procedimientos establecidos.",
+      "Usar correctamente dispositivos digitales mejora productividad y colaboración en tiempo real.",
+    color: "text-tech-red bg-tech-red border-tech-red",
   },
   {
-    titulo: "Foco en el resultado",
-    valor: 6,
-    minimo: 1,
-    maximo: 10,
-    descripcion: "Enfoque, claridad y seguimiento a las metas del trabajo.",
-  },
-  {
-    titulo: "Proactividad",
-    valor: 5,
-    minimo: 1,
-    maximo: 10,
-    descripcion: "Acción rápida. Mejorar el trabajo. Solucionar problemas.",
-  },
-  {
-    titulo: "Razonamiento matemático",
-    valor: 4,
-    minimo: 1,
-    maximo: 10,
-    descripcion:
-      "Interés o habilidad hacia el trabajo con información cuantitativa.",
-  },
-  {
-    titulo: "Ambición",
-    valor: 4,
-    minimo: 1,
-    maximo: 10,
-    descripcion:
-      "Ser competitivo. Alcanzar reconocimiento y/o puestos de autoridad.",
-  },
-  {
-    titulo: "Innovación",
-    valor: 8,
-    minimo: 1,
-    maximo: 10,
-    descripcion: "Generar ideas y soluciones creativas.",
-  },
-  {
-    titulo: "Orientación hacia el cliente",
+    titulo: "Ciberseguridad",
     valor: 5,
     minimo: 1,
     maximo: 10,
     descripcion:
-      "Propensión y compromiso hacia la atención y el servicio al cliente.",
+      "Proteger los datos y gestionar riesgos es clave para mantener la resiliencia organizacional.",
+    color: "text-tech-red bg-tech-red border-tech-red",
   },
   {
-    titulo: "Planificación-organización",
+    titulo: "Huella digital",
     valor: 6,
     minimo: 1,
     maximo: 10,
-    descripcion: "Planear el trabajo. Mantenerse organizado.",
+    descripcion:
+      "Controlar la huella digital protege la privacidad personal y corporativa frente a amenazas.",
+    color: "text-tech-green bg-tech-green border-tech-green",
   },
   {
-    titulo: "Toma de decisiones",
+    titulo: "Uso de la tecnología",
+    valor: 7,
+    minimo: 1,
+    maximo: 10,
+    descripcion:
+      "Un liderazgo ético y responsable en lo digital genera confianza y respeto.",
+    color: "text-tech-green bg-tech-green border-tech-green",
+  },
+  {
+    titulo: "Herramientas de colaboración",
     valor: 8,
     minimo: 1,
     maximo: 10,
-    descripcion: "Facilidad y confianza para tomar decisiones.",
+    descripcion:
+      "Usar bien las herramientas colaborativas mejora flujos de trabajo y eficiencia.",
+    color: "text-tech-green bg-tech-green border-tech-green",
   },
   {
-    titulo: "Visión estratégica",
-    valor: 10,
-    minimo: 1,
-    maximo: 10,
-    descripcion: "Comprender el entorno. Anticipar escenarios y posibilidades.",
-  },
-  {
-    titulo: "Autocontrol",
+    titulo: "Tecnologías emergentes",
     valor: 9,
     minimo: 1,
     maximo: 10,
-    descripcion: "Capacidad para mantener la calma y el dominio emocional.",
+    descripcion:
+      "Conocer y aplicar tecnologías emergentes permite innovar y mantenerse competitivo.",
+    color: "text-tech-green bg-tech-green border-tech-green",
+  },
+  {
+    titulo: "Tecnologías de asistencia",
+    valor: 10,
+    minimo: 1,
+    maximo: 10,
+    descripcion:
+      "Fomentar su uso promueve la inclusión y la equidad para todos.",
+    color: "text-tech-green bg-tech-green border-tech-green",
+  },
+  {
+    titulo: "Rol del líder y la tecnología",
+    valor: 10,
+    minimo: 1,
+    maximo: 10,
+    descripcion:
+      "Gestionar redes sociales de forma consciente protege la imagen y el equipo.",
+    color: "text-tech-blue bg-tech-blue border-tech-blue",
+  },
+  {
+    titulo: "Tecnología y medio ambiente",
+    valor: 7,
+    minimo: 1,
+    maximo: 10,
+    descripcion:
+      "Adoptar prácticas sostenibles reduce el impacto ambiental de la tecnología.",
+    color: "text-tech-blue bg-tech-blue border-tech-blue",
+  },
+  {
+    titulo: "Etiqueta digital",
+    valor: 7,
+    minimo: 1,
+    maximo: 10,
+    descripcion:
+      "Mantener una comunicación respetuosa en línea mejora relaciones y confianza.",
+    color: "text-tech-blue bg-tech-blue border-tech-blue",
   },
 ];
-
-function getBarColor(titulo: string): string {
-  const red = [
-    "Atención a los detalles",
-    "Capacidad de análisis",
-    "Conformidad",
-    "Foco en el resultado",
-    "Proactividad",
-    "Razonamiento matemático",
-  ];
-  const green = [
-    "Ambición",
-    "Innovación",
-    "Orientación hacia el cliente",
-    "Planificación-organización",
-    "Toma de decisiones",
-    "Visión estratégica",
-  ];
-  const blue = ["Autocontrol"];
-
-  if (red.includes(titulo)) return "#bf4828";
-  if (green.includes(titulo)) return "#046659";
-  if (blue.includes(titulo)) return "#2e58a4";
-  return "#6b7280";
-}
 
 function calculatePercentage(
   valor: number,
   minimo: number,
   maximo: number
 ): number {
-  return ((valor) / 10) * 100;
+  return (valor / 10) * 100;
 }
 ---
 
 <div class:list={["w-full", "max-w-5xl", "mx-auto", "p-6", "bg-white"]}>
-  <div class:list={["space-y-6"]}>
+  <div class:list={["space-y-2"]}>
     {
       chartData.map((item) => (
         <div
@@ -154,118 +155,29 @@ function calculatePercentage(
             "sm:items-center",
           ]}
         >
-          <div class:list={["w-1/2"]}> 
-            <h3
-              class:list={["font-bold", "text-sm"]}
-              style={`color: ${getBarColor(item.titulo)}`}
-            >
-              {item.titulo}
-            </h3>
-            <p class:list={["text-xs", "font-semibold","text-black", "leading-tight"]}>
-              {item.descripcion}
-            </p>
+          <div class:list={["w-5/12"]}>
+            <Info
+              title={item.titulo}
+              description={item.descripcion}
+              color={item.color}
+            />
           </div>
 
-<div class:list={["w-1/2"]}>
-            <div class:list={["flex", "items-center", "gap-2"]}>
-              <div
-                class:list={[
-                  "flex",
-                  "flex-col",
-                  "items-center",
-                  "text-xs",
-                  "text-gray-500",
-                ]}
-              >
+          <div class:list={["w-7/12", "relative"]}>
+            <div class:list={["relative"]}>
+              <Bar
+                value={item.valor}
+                color={item.color}
+                percentage={calculatePercentage(
+                  item.valor,
+                  item.minimo,
+                  item.maximo
+                )}
+              />
 
-              </div>
-
-              <div class:list={["flex-1", "relative"]}>
-                <div
-                  class:list={["w-full", "bg-gray-200", "rounded-lg", "h-8"]}
-                >
-                  <div
-                    class:list={[
-                      "h-full",
-                      "rounded-md",
-                      "transition-all",
-                      "duration-500",
-                      "ease-out",
-                      "relative",
-                    ]}
-                    style={`width: ${calculatePercentage(item.valor, item.minimo, item.maximo)}%; background-color: ${getBarColor(item.titulo)}`}
-                  >
-                    <div
-                      class:list={[
-                        "absolute",
-                        "right-0",
-                        "top-1/2",
-                        "-translate-y-1/2",
-                        "bg-white",
-                        "px-2",
-                        "border-4",
-                        "py-2",
-                        "text-black",
-                        "font-bold",
-                        "text-sm",
-                        "rounded-md",
-                      ]}
-                      style={`border-color: ${getBarColor(item.titulo)}`}
-                    >
-                      {item.valor}
-                    </div>
-                  </div>
-                </div>
-                  <!-- red lines (centrada) -->
-                  <div 
-                    class:list={["absolute", "top-1/2", "-translate-y-12", "h-3", "w-1", "bg-red-500", "z-10"]}
-                    style={`left: ${((4 - 0.5) / 10) * 100}%;`}
-                  ></div>
-                  <div 
-                    class:list={["absolute", "top-1/2", "-translate-y-6", "h-1", "w-1", "bg-red-500", "z-10"]}
-                    style={`left: ${((4 - 0.5) / 10) * 100}%;`}
-                  ></div>
-
-                  <!-- yellow lines -->
-                  <div 
-                    class:list={["absolute", "top-1/2", "-translate-y-12", "h-3", "w-1", "bg-yellow-500", "z-10"]}
-                    style={`left: ${((7 - 0.5) / 10) * 100}%;`}
-                  ></div>
-                  <div 
-                    class:list={["absolute", "top-1/2", "-translate-y-6", "h-1", "w-1", "bg-yellow-500", "z-10"]}
-                    style={`left: ${((7 - 0.5) / 10) * 100}%;`}
-                  ></div>
-
-                  <!-- green lines-->
-                  <div 
-                    class:list={["absolute", "top-1/2", "-translate-y-12", "h-3", "w-1", "bg-green-500", "z-10"]}
-                    style={`left: ${((10 - 0.5) / 10) * 100}%;`}
-                  ></div>
-                  <div 
-                    class:list={["absolute", "top-1/2", "-translate-y-6", "h-1", "w-1", "bg-green-500", "z-10"]}
-                    style={`left: ${((10 - 0.5) / 10) * 100}%;`}
-                  ></div>
-                <div
-                  class:list={[
-                    "flex",
-                    "justify-between",
-                    "text-xs",
-                    "text-gray-400",
-                    "mt-1",
-                  ]}
-                />
-              </div>
-
-              <div
-                class:list={[
-                  "flex",
-                  "flex-col",
-                  "items-center",
-                  "text-xs",
-                  "text-gray-500",
-                ]}
-              >
-              </div>
+              <Line position={4} color="bg-red-500" />
+              <Line position={7} color="bg-yellow-500" />
+              <Line position={10} color="bg-green-500" />
             </div>
           </div>
         </div>
