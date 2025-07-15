@@ -1,8 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{astro,html,js,ts,jsx,tsx}"],
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'tech-red': '#bf4828',
+        'tech-green': '#046659',
+        'tech-blue': '#2e58a4',
+      }
+    },
   },
   plugins: [],
 }
