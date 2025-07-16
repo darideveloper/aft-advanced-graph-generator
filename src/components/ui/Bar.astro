@@ -30,7 +30,7 @@ const widthClass =
   widthClasses[roundedPercentage as keyof typeof widthClasses] || "w-0";
 ---
 
-<div class:list={["w-full"]}>
+<div class:list={["w-full", className]}>
   <div class:list={["flex", "items-center", "gap-2"]}>
     <div class:list={["flex-1", "relative"]}>
       <div class:list={["w-full", "bg-gray-200", "rounded-lg", "h-8"]}>
