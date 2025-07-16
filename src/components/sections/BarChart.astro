@@ -134,14 +134,12 @@ const chartData: Competencia[] = [
 
 function calculatePercentage(
   valor: number,
-  minimo: number,
-  maximo: number
 ): number {
   return (valor / 10) * 100;
 }
 ---
 
-<div class:list={["w-full", "max-w-5xl", "mx-auto", "p-6", "bg-white"]}>
+<div class:list={["w-full", "max-w-7xl", "mx-auto", "p-6", "bg-white"]}>
   <div class:list={["space-y-2"]}>
     {
       chartData.map((item) => (
@@ -169,8 +167,6 @@ function calculatePercentage(
                 color={item.color}
                 percentage={calculatePercentage(
                   item.valor,
-                  item.minimo,
-                  item.maximo
                 )}
               />
 
