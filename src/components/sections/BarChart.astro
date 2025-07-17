@@ -132,9 +132,7 @@ const chartData: Competencia[] = [
   },
 ];
 
-function calculatePercentage(
-  valor: number,
-): number {
+function calculatePercentage(valor: number): number {
   return (valor / 10) * 100;
 }
 ---
@@ -165,14 +163,12 @@ function calculatePercentage(
               <Bar
                 value={item.valor}
                 color={item.color}
-                percentage={calculatePercentage(
-                  item.valor,
-                )}
+                percentage={calculatePercentage(item.valor)}
               />
 
-              <Line position={4} color="bg-red-500" />
-              <Line position={7} color="bg-yellow-500" />
-              <Line position={10} color="bg-green-500" />
+              <Line position={4} color="bg-tech-red" />
+              <Line position={7} color="bg-tech-green" />
+              <Line position={10} color="bg-tech-blue" />
             </div>
           </div>
         </div>
