@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'tech-red': '#bf4828',
-        'tech-green': '#046659',
-        'tech-blue': '#2e58a4',
+        'tech-red': '#fcc47e',
+        'tech-green': '#77d9b8',
+        'tech-blue': '#123c55',
       }
     },
   },
