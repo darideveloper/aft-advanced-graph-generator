@@ -7,7 +7,13 @@ interface Props {
   class?: string;
 }
 
-const { value, color, percentage, promedio, class: className = "" } = Astro.props;
+const {
+  value,
+  color,
+  percentage,
+  promedio,
+  class: className = "",
+} = Astro.props;
 
 const bgColor = color.split(" ").find((c) => c.startsWith("bg-")) || "";
 const borderColor = color.split(" ").find((c) => c.startsWith("border-")) || "";
@@ -76,43 +82,45 @@ const shouldShowPromedio = promedio !== undefined && value !== promedio;
             {value}
           </div>
         </div>
-        
-        {shouldShowPromedio && (
-          <div
-            class:list={[
-              "absolute",
-              "top-0",
-              "h-full",
-              "transition-all",
-              "duration-500",
-              "ease-out",
-              "z-5",
-              promedioWidthClass,
-            ]}
-          >
+
+        {
+          shouldShowPromedio && (
             <div
               class:list={[
                 "absolute",
-                "right-0",
-                "top-1/2",
-                "-translate-y-1/2",
-                "bg-white/50",
-                "px-2",
-                "py-2.5",
-                "text-black/50",
-                "font-bold",
-                "text-sm",
-                "rounded-md",
-                "border-4",
-                "border-dashed",
-                "z-20",
-                borderColor,
+                "top-0",
+                "h-full",
+                "transition-all",
+                "duration-500",
+                "ease-out",
+                "z-5",
+                promedioWidthClass,
               ]}
             >
-              {promedio}
+              <div
+                class:list={[
+                  "absolute",
+                  "right-0",
+                  "top-1/2",
+                  "-translate-y-1/2",
+                  "bg-white/50",
+                  "px-2",
+                  "py-2.5",
+                  "text-black/50",
+                  "font-bold",
+                  "text-sm",
+                  "rounded-md",
+                  "border-4",
+                  "border-dashed",
+                  "z-20",
+                  borderColor,
+                ]}
+              >
+                {promedio}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        }
       </div>
     </div>
   </div>
