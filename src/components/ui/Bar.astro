@@ -79,7 +79,7 @@ const shouldShowPromedio = promedio !== undefined && value !== promedio;
               borderColor,
             ]}
           >
-            {value}
+            {Math.round(value)}
           </div>
         </div>
 
@@ -116,7 +116,7 @@ const shouldShowPromedio = promedio !== undefined && value !== promedio;
                   borderColor,
                 ]}
               >
-                {promedio}
+                {Math.round(promedio)}
               </div>
             </div>
           )
