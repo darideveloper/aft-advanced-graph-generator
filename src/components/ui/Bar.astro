@@ -3,10 +3,11 @@ interface Props {
   value: number;
   color: string;
   percentage: number;
+  promedio?: number;
   class?: string;
 }
 
-const { value, color, percentage, class: className = "" } = Astro.props;
+const { value, color, percentage, promedio, class: className = "" } = Astro.props;
 
 const bgColor = color.split(" ").find((c) => c.startsWith("bg-")) || "";
 const borderColor = color.split(" ").find((c) => c.startsWith("border-")) || "";
@@ -28,6 +29,13 @@ const widthClasses = {
 const roundedPercentage = Math.round(percentage / 10) * 10;
 const widthClass =
   widthClasses[roundedPercentage as keyof typeof widthClasses] || "w-0";
+
+const promedioPercentage = promedio ? (promedio / 10) * 100 : 0;
+const roundedPromedioPercentage = Math.round(promedioPercentage / 10) * 10;
+const promedioWidthClass =
+  widthClasses[roundedPromedioPercentage as keyof typeof widthClasses] || "w-0";
+
+const shouldShowPromedio = promedio !== undefined && value !== promedio;
 ---
 
 <div class:list={["w-full", className]}>
@@ -68,6 +76,43 @@ const widthClass =
             {value}
           </div>
         </div>
+        
+        {shouldShowPromedio && (
+          <div
+            class:list={[
+              "absolute",
+              "top-0",
+              "h-full",
+              "transition-all",
+              "duration-500",
+              "ease-out",
+              "z-5",
+              promedioWidthClass,
+            ]}
+          >
+            <div
+              class:list={[
+                "absolute",
+                "right-0",
+                "top-1/2",
+                "-translate-y-1/2",
+                "bg-white/50",
+                "px-2",
+                "py-2.5",
+                "text-black/50",
+                "font-bold",
+                "text-sm",
+                "rounded-md",
+                "border-4",
+                "border-dashed",
+                "z-20",
+                borderColor,
+              ]}
+            >
+              {promedio}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   </div>
