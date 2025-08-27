@@ -1,10 +1,9 @@
-// astro.config.mjs
 import { defineConfig } from 'astro/config';
+import node from '@astrojs/node';
 
 export default defineConfig({
-  site: 'https://aft-advanced-graph-generator.apps.darideveloper.com',
-  base: '/',
-  build: {
-    inlineStylesheets: 'always',
-  }
+  output: 'server',
+  adapter: node({
+    mode: 'standalone', // empaqueta todo para Node
+  }),
 });
