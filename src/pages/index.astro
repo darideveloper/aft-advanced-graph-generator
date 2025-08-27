@@ -1,7 +1,11 @@
 ---
-// src/pages/index.astro
 import BarChart from "../components/sections/BarChart.astro";
 import "../styles/tailwind.css";
+
+// Capturar parámetros de la URL (survey_id y participant_id)
+const url = new URL(Astro.request.url);
+const surveyId = url.searchParams.get("survey_id");
+const participantId = url.searchParams.get("participant_id");
 ---
 
 <html lang="es">
@@ -12,7 +16,7 @@ import "../styles/tailwind.css";
   </head>
   <body>
     <main>
-      <BarChart />
+      <BarChart surveyId={surveyId} participantId={participantId} />
     </main>
   </body>
 </html>
