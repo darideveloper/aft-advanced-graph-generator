@@ -2,17 +2,14 @@
 interface Props {
   title: string;
   description: string;
-  color: string;
   class?: string;
 }
 
-const { title, description, color, class: className = "" } = Astro.props;
-
-const textColor = color.split(" ").find((c) => c.startsWith("text-")) || "";
+const { title, description, class: className = "" } = Astro.props;
 ---
 
 <div class:list={["w-full", className]}>
-  <h3 class:list={["font-bold", "text-xl", textColor]}>
+  <h3 class:list={["font-bold", "text-xl", "text-black"]}>
     {title}
   </h3>
   <p class:list={["font-semibold", "text-black", "leading-tight"]}>
