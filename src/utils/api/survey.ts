@@ -8,8 +8,13 @@ interface Competencia {
   color: string;
 }
 
+interface ApiData {
+  "chartData": Competencia[];
+  "useAverage": boolean;
+}
+
 export async function getBarChartData(participantId: string): Promise<{
-  data: Competencia[];
+  data: ApiData;
   error: boolean;
   errorMessage?: string;
 }> {
@@ -20,7 +25,10 @@ export async function getBarChartData(participantId: string): Promise<{
 
     if (!apiEndpoint || !surveyId || !apiToken) {
       return {
-        data: [],
+        data: {
+          chartData: [],
+          useAverage: false
+        },
         error: true,
         errorMessage: "Configuración de API incompleta. Faltan variables de entorno."
       };
@@ -38,7 +46,10 @@ export async function getBarChartData(participantId: string): Promise<{
 
     if (!response.ok) {
       return {
-        data: [],
+        data: {
+          chartData: [],
+          useAverage: false
+        },
         error: true,
         errorMessage: `Error del servidor: ${response.status} - ${response.statusText}`
       };
@@ -47,13 +58,19 @@ export async function getBarChartData(participantId: string): Promise<{
     const result = await response.json();
 
     return {
-      data: result.data ?? [],
+      data: {
+        chartData: result.data["chart_data"] ?? [],
+        useAverage: result.data["use_average"] ?? false
+      },
       error: false
     };
   } catch (err) {
     console.error("Error al obtener datos:", err);
     return {
-      data: [],
+      data: {
+        chartData: [],
+        useAverage: false
+      },
       error: true,
       errorMessage: "Error de conexión. Por favor, verifica tu conexión a internet e intenta nuevamente."
     };

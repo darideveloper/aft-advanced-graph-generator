@@ -20,12 +20,12 @@ let chartData: Competencia[] = [];
 let error = false;
 let errorMessage = "";
 let loading = true;
+let useAverage = false;
 
 if (participantId) {
-  const result = await getBarChartData(participantId);
-  chartData = result.data;
-  error = result.error;
-  errorMessage = result.errorMessage || "";
+  const { data, error, errorMessage } = await getBarChartData(participantId);
+  chartData = data.chartData;
+  useAverage = data.useAverage;
   loading = false;
 } else {
   loading = false;
@@ -77,6 +77,15 @@ const colors = colorsDistribution.flatMap((item) => {
   {
     !loading && !error && chartData.length > 0 && (
       <div class:list={['space-y-2']}>
+        <h1
+          class="text-2xl font-bold"
+        >
+          Resultados por cluster destacando el
+          <span class="italic">
+            {useAverage ? "Promedio" : "Perfil deseado"}
+          </span>
+        </h1>
+
         {chartData.map((item, index) => (
           <div
             class:list={[
