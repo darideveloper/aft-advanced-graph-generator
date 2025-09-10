@@ -1,8 +1,8 @@
 ---
-import Info from "../../components/ui/Info.astro";
-import Bar from "../../components/ui/Bar.astro";
-import Line from "../../components/ui/Line.astro";
-import { getBarChartData } from "../../utils/api/survey";
+import Info from '../../components/ui/Info.astro'
+import Bar from '../../components/ui/Bar.astro'
+import Line from '../../components/ui/Line.astro'
+import { getBarChartData } from '../../utils/api/survey'
 
 const { surveyId, participantId } = Astro.props
 
@@ -16,21 +16,21 @@ interface Competencia {
   color: string
 }
 
-let chartData: Competencia[] = [];
-let error = false;
-let errorMessage = "";
-let loading = true;
-let useAverage = false;
+let chartData: Competencia[] = []
+let error = false
+let errorMessage = ''
+let loading = true
+let useAverage = false
 
 if (participantId) {
-  const { data, error, errorMessage } = await getBarChartData(participantId);
-  chartData = data.chartData;
-  useAverage = data.useAverage;
-  loading = false;
+  const { data, error, errorMessage } = await getBarChartData(participantId)
+  chartData = data.chartData
+  useAverage = data.useAverage
+  loading = false
 } else {
-  loading = false;
-  error = true;
-  errorMessage = "ID de participante requerido";
+  loading = false
+  error = true
+  errorMessage = 'ID de participante requerido'
 }
 
 function calculatePercentage(valor: number): number {
@@ -40,17 +40,17 @@ function calculatePercentage(valor: number): number {
 // Calculate colors
 const colorsDistribution = [
   {
-    "num": 4,
-    "color": "bg-tech-orange border-tech-orange"
+    num: 4,
+    color: 'bg-tech-orange border-tech-orange',
   },
   {
-    "num": 5,
-    "color": "bg-tech-green border-tech-green"
+    num: 5,
+    color: 'bg-tech-green border-tech-green',
   },
   {
-    "num": 4,
-    "color": "bg-tech-blue border-tech-blue"
-  }
+    num: 4,
+    color: 'bg-tech-blue border-tech-blue',
+  },
 ]
 const colors = colorsDistribution.flatMap((item) => {
   return [...Array(item.num).fill(item.color)]
@@ -61,7 +61,7 @@ const colors = colorsDistribution.flatMap((item) => {
   {loading && <p class='text-center text-gray-600'>Cargando datos...</p>}
   {
     error && (
-      <p class="text-center text-red-500">
+      <p class='text-center text-red-500'>
         Error al cargar los datos: {errorMessage}
       </p>
     )
@@ -77,12 +77,23 @@ const colors = colorsDistribution.flatMap((item) => {
   {
     !loading && !error && chartData.length > 0 && (
       <div class:list={['space-y-2']}>
-        <h1
-          class="text-2xl font-bold"
-        >
-          Resultados por cluster destacando el
-          <span class="italic">
-            {useAverage ? "Promedio" : "Perfil deseado"}
+        <h1 class='text-2xl font-bold flex items-center justify-between'>
+          <span>
+            Resultados por tema
+          </span>
+          <span class="h-full flex items-center justify-center gap-1">
+            <span
+              class:list={[
+                "h-7",
+                "w-1",
+                "bg-gray-600",
+                "mr-1",
+                "inline-block"
+              ]}
+            />
+            <span class:list={['text-lg', 'italic']}>
+              {useAverage ? 'Promedio Global' : 'Perfil deseado'}
+            </span>
           </span>
         </h1>
 
