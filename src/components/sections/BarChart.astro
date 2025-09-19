@@ -121,6 +121,8 @@ const colors = colorsDistribution.flatMap((item) => {
                   color={colors[index]}
                   percentage={calculatePercentage(item.valor)}
                   promedio={item.promedio}
+                  min={item.minimo}
+                  max={item.maximo}
                 />
 
                 <Line
