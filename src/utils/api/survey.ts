@@ -21,6 +21,7 @@ export async function getBarChartData(participantId: string, api_url_force: stri
   try {
     let apiEndpoint = import.meta.env.API_ENDPOINT;
     if (api_url_force) {
+      api_url_force = api_url_force.replace("localhost", "127.0.0.1");
       apiEndpoint = api_url_force;
     }
     const surveyId = import.meta.env.BAR_CHART_SURVEY_ID;

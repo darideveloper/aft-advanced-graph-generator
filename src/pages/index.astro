@@ -4,9 +4,10 @@ import '../styles/tailwind.css'
 
 // Capturar parámetros de la URL (survey_id y participant_id)
 const url = new URL(Astro.request.url)
-const surveyId = url.searchParams.get('survey_id')
-const participantId = url.searchParams.get('participant_id')
-const api_url_force = url.searchParams.get('api_url_force')
+const raw_data = url.searchParams.get('data')
+
+const json_data = JSON.parse(raw_data ?? '{}')
+console.log(json_data)
 ---
 
 <html lang='es'>
@@ -21,9 +22,7 @@ const api_url_force = url.searchParams.get('api_url_force')
   <body>
     <main>
       <BarChart
-        surveyId={surveyId}
-        participantId={participantId}
-        api_url_force={api_url_force}
+        data={json_data}
       />
     </main>
   </body>
