@@ -4,7 +4,7 @@ import Bar from '../../components/ui/Bar.astro'
 import Line from '../../components/ui/Line.astro'
 import { getBarChartData } from '../../utils/api/survey'
 
-const { surveyId, participantId } = Astro.props
+const { surveyId, participantId, api_url_force } = Astro.props
 
 interface Competencia {
   titulo: string
@@ -23,7 +23,7 @@ let loading = true
 let useAverage = false
 
 if (participantId) {
-  const { data, error, errorMessage } = await getBarChartData(participantId)
+  const { data, error, errorMessage } = await getBarChartData(participantId, api_url_force)
   chartData = data.chartData
   useAverage = data.useAverage
   loading = false

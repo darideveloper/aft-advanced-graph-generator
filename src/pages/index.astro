@@ -1,22 +1,30 @@
 ---
-import BarChart from "../components/sections/BarChart.astro";
-import "../styles/tailwind.css";
+import BarChart from '../components/sections/BarChart.astro'
+import '../styles/tailwind.css'
 
 // Capturar parámetros de la URL (survey_id y participant_id)
-const url = new URL(Astro.request.url);
-const surveyId = url.searchParams.get("survey_id");
-const participantId = url.searchParams.get("participant_id");
+const url = new URL(Astro.request.url)
+const surveyId = url.searchParams.get('survey_id')
+const participantId = url.searchParams.get('participant_id')
+const api_url_force = url.searchParams.get('api_url_force')
 ---
 
-<html lang="es">
+<html lang='es'>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset='utf-8' />
+    <meta
+      name='viewport'
+      content='width=device-width, initial-scale=1'
+    />
     <title>AFT Advanced Graph Generator</title>
   </head>
   <body>
     <main>
-      <BarChart surveyId={surveyId} participantId={participantId} />
+      <BarChart
+        surveyId={surveyId}
+        participantId={participantId}
+        api_url_force={api_url_force}
+      />
     </main>
   </body>
 </html>

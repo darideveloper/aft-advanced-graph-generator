@@ -13,13 +13,16 @@ interface ApiData {
   "useAverage": boolean;
 }
 
-export async function getBarChartData(participantId: string): Promise<{
+export async function getBarChartData(participantId: string, api_url_force: string = ''): Promise<{
   data: ApiData;
   error: boolean;
   errorMessage?: string;
 }> {
   try {
-    const apiEndpoint = import.meta.env.API_ENDPOINT;
+    let apiEndpoint = import.meta.env.API_ENDPOINT;
+    if (api_url_force) {
+      apiEndpoint = api_url_force;
+    }
     const surveyId = import.meta.env.BAR_CHART_SURVEY_ID;
     const apiToken = import.meta.env.API_TOKEN;
 
