@@ -28,7 +28,10 @@ const actualValuePercentage = Math.min(100, Math.max(0, ((value - min) / (max - 
 
 // Use dynamic width and position based on calculated percentages
 const barWidth = `${actualPercentage}%`;
-const barPosition = `${actualValuePercentage}%`;
+// Ensure value position doesn't exceed bar width (with some padding for the square)
+const maxValuePosition = Math.max(0, actualPercentage - 5); // 5% padding from the end
+const constrainedValuePosition = Math.min(actualValuePercentage, maxValuePosition);
+const barPosition = `${constrainedValuePosition}%`;
 
 // Calculate promedio position if provided
 const promedioPercentage = promedio ? Math.min(100, Math.max(0, ((promedio - min) / (max - min)) * 100)) : 0;
