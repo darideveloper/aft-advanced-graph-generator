@@ -55,6 +55,25 @@ const promedioPosition = `${promedioPercentage}%`;
           ]}
           style={`width: ${barWidth}`}
         >
+          {
+            promedio !== undefined && (
+              <div
+                class:list={[
+                  "absolute",
+                  "top-0",
+                  "h-full",
+                  "w-1",
+                  "bg-gray-600",
+                  "z-5",
+                  "-translate-x-1/2",
+                ]}
+                style={`left: ${promedioPosition}`}
+                data-avg={promedio}
+              >
+              </div>
+            )
+          }
+          
           <div
             class:list={[
               "absolute",
@@ -76,25 +95,6 @@ const promedioPosition = `${promedioPercentage}%`;
             {Math.round(value)}
           </div>
         </div>
-
-        {
-          promedio !== undefined && (
-            <div
-              class:list={[
-                "absolute",
-                "top-0",
-                "h-full",
-                "w-1",
-                "bg-gray-600",
-                "z-30",
-                "-translate-x-1/2",
-              ]}
-              style={`left: ${promedioPosition}`}
-              data-avg={promedio}
-            >
-            </div>
-          )
-        }
       </div>
     </div>
   </div>
