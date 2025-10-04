@@ -6,8 +6,16 @@ import '../styles/tailwind.css'
 const url = new URL(Astro.request.url)
 const raw_data = url.searchParams.get('data')
 
-const json_data = JSON.parse(raw_data ?? '{}')
-console.log(json_data)
+function decodeUnicodeEscapes(str: string) {
+  // First, replace double backslashes with single backslashes
+  // This converts \\u00f3 to \u00f3
+  return str.replace(/\\\\u([0-9a-fA-F]{4})/g, '\\u$1');
+}
+
+const decodedParam = decodeUnicodeEscapes(raw_data ?? '{}');
+const fullyDecodedData = JSON.parse(decodedParam);
+
+console.log(fullyDecodedData);
 ---
 
 <html lang='es'>
@@ -22,7 +30,7 @@ console.log(json_data)
   <body>
     <main>
       <BarChart
-        data={json_data}
+        data={fullyDecodedData}
       />
     </main>
   </body>
