@@ -21,8 +21,8 @@ let errorMessage = ''
 let loading = true
 let useAverage = false
 
-chartData = data["chart_data"]
-useAverage = data["use_average"]
+chartData = data['chart_data']
+useAverage = data['use_average']
 loading = false
 
 if (chartData === undefined || useAverage === undefined) {
@@ -76,20 +76,12 @@ const colors = colorsDistribution.flatMap((item) => {
 
   {
     !loading && !error && chartData.length > 0 && (
-      <div class:list={['space-y-2']}>
-        <h1 class='text-2xl font-bold flex items-center justify-between'>
-          <span>
-            Resultados por tema
-          </span>
-          <span class="h-full flex items-center justify-center gap-1">
+      <div class:list={[]}>
+        <h1 class='text-2xl font-bold flex items-center justify-between mb-6 mt-4'>
+          <span>Resultados por tema</span>
+          <span class='h-full flex items-center justify-center gap-1'>
             <span
-              class:list={[
-                "h-7",
-                "w-1",
-                "bg-gray-600",
-                "mr-1",
-                "inline-block"
-              ]}
+              class:list={['h-7', 'w-1', 'bg-gray-600', 'mr-1', 'inline-block']}
             />
             <span class:list={['text-lg', 'italic']}>
               {useAverage ? 'Promedio Global' : 'Perfil deseado'}
@@ -97,50 +89,52 @@ const colors = colorsDistribution.flatMap((item) => {
           </span>
         </h1>
 
-        {chartData.map((item, index) => (
-          <div
-            class:list={[
-              'flex',
-              'flex-col',
-              'sm:flex-row',
-              'gap-4',
-              'items-start sm:items-center',
-            ]}
-          >
-            <div class:list={['w-5/12']}>
-              <Info
-                title={item.titulo}
-                description={item.descripcion}
-              />
-            </div>
-
-            <div class:list={['w-7/12', 'relative']}>
-              <div class:list={['relative']}>
-                <Bar
-                  value={item.valor}
-                  color={colors[index]}
-                  percentage={calculatePercentage(item.valor)}
-                  promedio={item.promedio}
-                  min={item.minimo}
-                  max={item.maximo}
-                />
-
-                <Line
-                  position={4}
-                  color='bg-tech-orange'
-                />
-                <Line
-                  position={7}
-                  color='bg-tech-green'
-                />
-                <Line
-                  position={10}
-                  color='bg-tech-blue'
+        <div class:list={['space-y-2']}>
+          {chartData.map((item, index) => (
+            <div
+              class:list={[
+                'flex',
+                'flex-col',
+                'sm:flex-row',
+                'gap-4',
+                'items-start sm:items-center',
+              ]}
+            >
+              <div class:list={['w-5/12']}>
+                <Info
+                  title={item.titulo}
+                  description={item.descripcion}
                 />
               </div>
+
+              <div class:list={['w-7/12', 'relative']}>
+                <div class:list={['relative']}>
+                  <Bar
+                    value={item.valor}
+                    color={colors[index]}
+                    percentage={calculatePercentage(item.valor)}
+                    promedio={item.promedio}
+                    min={item.minimo}
+                    max={item.maximo}
+                  />
+
+                  <Line
+                    position={4}
+                    color='bg-tech-orange'
+                  />
+                  <Line
+                    position={7}
+                    color='bg-tech-green'
+                  />
+                  <Line
+                    position={10}
+                    color='bg-tech-blue'
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     )
   }
